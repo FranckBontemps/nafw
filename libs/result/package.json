@@ -1,0 +1,12 @@
+{
+  "name": "@nafw/result",
+  "version": "0.0.1",
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "ts-essentials": "10.0.2"
+  },
+  "type": "module",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
+}

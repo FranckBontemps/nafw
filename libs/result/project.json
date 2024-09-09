@@ -1,0 +1,26 @@
+{
+  "name": "result",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/result/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/result",
+        "main": "libs/result/src/index.ts",
+        "tsConfig": "libs/result/tsconfig.lib.json",
+        "assets": ["libs/result/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/result"
+      }
+    }
+  }
+}

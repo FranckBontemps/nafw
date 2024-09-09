@@ -1,0 +1,105 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "**/*"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "@nx",
+    "import",
+    "unused-imports",
+    "canonical"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": [
+                  "*"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "plugin:@nx/typescript"
+      ],
+      "rules": {
+        "canonical/require-extension": "error",
+        "unused-imports/no-unused-imports": "error",
+        "@typescript-eslint/consistent-type-exports": "error",
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          {
+            "prefer": "type-imports",
+            "fixStyle": "separate-type-imports"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "args": "none"
+          }
+        ],
+        "import/no-useless-path-segments": "error",
+        "import/newline-after-import": "error",
+        "import/first": "error",
+        "import/no-duplicates": [
+          "error"
+        ],
+        "import/order": [
+          "error",
+          {
+            "newlines-between": "never",
+            "groups": [
+              "external",
+              "builtin",
+              "internal",
+              "index",
+              [
+                "sibling",
+                "parent"
+              ],
+              "object"
+            ]
+          }
+        ],
+        "import/no-cycle": "warn",
+        "import/no-self-import": "error"
+      }
+    },
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "plugin:@nx/javascript"
+      ],
+      "rules": {}
+    }
+  ]
+}
